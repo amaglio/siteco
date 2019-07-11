@@ -1,0 +1,171 @@
+<?=$vista_head;?>
+
+<link type="text/css" href="<?=base_url()?>assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+<!-- /. NAV SIDE  -->
+<div id="page-wrapper" >
+     <div class="row"  style="border-bottom:1px solid #000; color:#fff; border-top:1px solid #000; margin:0px; margin-bottom:10px; background-color:#202020;">
+            <div class="col-md-12 col-lg-12 ">
+                <h4>  <i class="fa fa-external-link fa-1x"  ></i> - <strong> Cursos externos </strong></h4> 
+            </div>
+     </div>  
+
+     <div id="page-inner" style="margin:0px; ">            
+            
+        <?php  if ($mensaje): ?>
+
+            <div class="alert alert-danger" style="margin:10px;">
+              <h5><?=$mensaje;?></h5>
+            </div>
+
+
+        <?php  endif; ?>
+
+            <div class="col-md-7"> 
+
+            </div>
+             <div class="col-md-5"> 
+
+
+            </div>
+
+    </div>
+ <!-- /. PAGE WRAPPER  -->
+</div>
+ <!-- /. WRAPPER  -->
+<!-- JQUERY SCRIPTS -->
+<script src="<?=base_url()?>assets/js/jquery-1.10.2.js"></script>
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+<!-- METISMENU SCRIPTS -->
+<script src="<?=base_url()?>assets/js/jquery.metisMenu.js"></script>
+
+
+<!-- TABLE STYLES-->
+
+<script src="<?=base_url()?>assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="<?=base_url()?>assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+<script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable( {
+                    "language": {
+                        "lengthMenu": "Mostrando _MENU_ notificaciones por pagina.",
+                        "zeroRecords": "Ninguna notificacion fue encontrada.",
+                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                        "infoEmpty": "Ninguna notificacion disponible",
+                        "infoFiltered": "(Filtrado de _MAX_ notificaciones totales)",
+                        "sSearch": " Buscar    ",
+                        "oPaginate": {
+                                        "sNext": "Proxima pagina",
+                                        "sPrevious": "Pagina anterior"
+                                      }
+                    }
+                } );
+
+
+        });
+
+ 
+</script>
+
+<script src="<?=base_url()?>assets/js/custom.js"></script>
+<link   type="text/css" href="<?php echo base_url(); ?>assets/css/dark-hive/jquery-ui-1.8.10.custom.css" rel="stylesheet" /> 
+
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui-1.8.10.custom.min.js"></script>
+
+<script language="javascript" type="text/javascript" src="<?=base_url()?>assets/js/jquery.validate.js" ></script>
+<script language="javascript" type="text/javascript" src="<?=base_url()?>assets/js/additional-methods.js" ></script> 
+
+<script>
+
+var jq = jQuery.noConflict();
+
+</script>
+
+<script type="text/javascript">
+
+    // Editar extra
+    jq('#curso_externo_form').validate({
+
+        rules :{
+
+                nombre_evento : {
+                    required : true 
+                },
+                id_empresa : {
+                    required : true 
+                }  
+        },
+        messages : {
+
+                nombre_evento : {
+                    required : "Ingrese el nombre del evento." 
+                },
+                id_empresa : {
+                    required : "La empresa debe ser seleccionada del listado." 
+                } 
+        }
+    }); 
+    
+    jq.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: '<Ant',
+            nextText: 'Sig>',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+            dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+    };
+
+    jq.datepicker.setDefaults(jq.datepicker.regional['es']);
+    
+    jq('#fecha_evento').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            changeDay: true,
+            dateFormat: 'yy-mm-dd'
+    });
+
+    jq('#fecha_cobro').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            changeDay: true,
+            dateFormat: 'yy-mm-dd'
+    });
+
+    jq('#empresa').autocomplete({
+
+                        source: CI_ROOT+'index.php/curso_externo/ajax_empresa',
+                        select: function(event, ui) 
+                        {
+                            jq('input[name="empresa"]').val(ui.item.value);                 
+                            jq('input[name="id_empresa"]').val(ui.item.id); 
+                        } 
+
+            });
+
+ 
+    jq( "#empresa" ).change(function() {
+      jq( "#id_empresa" ).val('');
+    });
+
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

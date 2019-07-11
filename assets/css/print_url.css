@@ -1,0 +1,32 @@
+#dataTables-example {
+  padding: 0px;
+  margin: 0px;
+}
+
+#dataTables-example td{
+  padding: 15px;
+  margin: 0px;
+}
+
+#dataTables-example th{
+  padding: 10px;
+  margin: 0px;
+}
+
+#fila_confirmaciones{
+  display:none;
+}
+
+#button_imprimir_cursos{
+  display:none;
+}
+
+input[type="checkbox"]{
+	
+	display:none;
+}
+
+.celda_comentario{
+	
+	display:none;
+}

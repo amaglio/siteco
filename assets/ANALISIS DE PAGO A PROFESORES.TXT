@@ -1,0 +1,28 @@
+---------- ANALISIS DE PAGO A PROFESORES ---------------------
+
+CAMPOS:
+
+IMPORTE: lo usa TESORERIA y lo toma GEMINIS para pagar.
+N_IMPORTE_PROFESOR: lo usa el coordinador para cambiar el valor default.
+C_OBS: se guarda el historial de lo que fue pasando.
+C_CONFIRMADO: guarda si esta o no confirmado el cursos por el coordinador-
+
+--- SI EL COORDINADOR CONFIRMA EL VALOR DEFAULT:
+
+C_CONFIRMADO = 1
+C_OBS = Confirmacion del curso
+N_IMPORTE_PROFESOR = NULL
+IMPORTE: NULL
+
+--- SI EL COORDINADOR MODIFICA VALOR DEFAULT:
+
+N_IMPORTE_PROFESOR = VALOR
+C_CONFIRMADO = NULLModifico el importe del coordinadorConfirmacion del curso 
+IMPORTE: NULL
+C_CONFIRMADO = NULL
+
+y SI LO CONFIRMO 
+
+C_CONFIRMADO = 1
+
+
